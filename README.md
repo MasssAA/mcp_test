@@ -1,11 +1,16 @@
-# MCP Teaching Demos
+# MCP Demo Repository
 
-这是一套给培训和课堂演示准备的 MCP 教学仓库，包含两个版本：
+这个仓库只保留两部分内容：
 
-- [teaching/mcp-demo](D:\opencalw\teaching\mcp-demo): 教学模拟版，适合先讲清概念
-- [teaching/mcp-real-demo](D:\opencalw\teaching\mcp-real-demo): 真实 `stdio` MCP 版，适合接入 Cherry Studio 等 MCP Host
+- 可运行代码
+- 使用说明
 
-## 仓库结构
+包含两个示例：
+
+- [teaching/mcp-demo](D:\opencalw\teaching\mcp-demo): 简化版示例
+- [teaching/mcp-real-demo](D:\opencalw\teaching\mcp-real-demo): 真实 `stdio` MCP 示例
+
+## 目录
 
 ```text
 teaching/
@@ -13,46 +18,16 @@ teaching/
   mcp-real-demo/
 ```
 
-## 两个版本的区别
-
-### `mcp-demo`
-
-用途：
-
-- 给测试人员讲概念
-- 先理解 `tools / resources / prompts`
-- 不依赖真实 MCP Host
-
-特点：
-
-- 零依赖
-- 自带脚本式演示客户端
-- 适合 10-15 分钟课堂导入
-
-### `mcp-real-demo`
-
-用途：
-
-- 给学员体验真实 MCP 接入
-- 接入 Cherry Studio 等支持 MCP 的客户端
-- 演示真正的 `stdio` 通信方式
-
-特点：
-
-- 使用 `Content-Length + JSON-RPC 2.0`
-- 支持标准初始化流程
-- 提供真实可接入的 `tools / resources / prompts`
-
 ## 快速开始
 
-### 教学模拟版
+### 1. 简化版
 
 ```powershell
 cd D:\opencalw\teaching\mcp-demo
 python .\client_demo.py
 ```
 
-### 真 MCP 版
+### 2. 真 MCP 版
 
 ```powershell
 cd D:\opencalw\teaching\mcp-real-demo
@@ -61,7 +36,7 @@ python .\probe_client.py
 
 ## 自检
 
-### 教学模拟版
+### 简化版
 
 ```powershell
 cd D:\opencalw\teaching\mcp-demo
@@ -75,14 +50,16 @@ cd D:\opencalw\teaching\mcp-real-demo
 python .\smoke_test.py
 ```
 
-## 适合教学的使用顺序
+## Cherry Studio 接入
 
-1. 先讲 [teaching/mcp-demo](D:\opencalw\teaching\mcp-demo)，把概念讲明白
-2. 再讲 [teaching/mcp-real-demo](D:\opencalw\teaching\mcp-real-demo)，让学员体验真实接入
-3. 最后接到 Cherry Studio 做实际演示
+真实 MCP 服务端文件在 [mcp_server.py](D:\opencalw\teaching\mcp-real-demo\mcp_server.py)。
 
-## 当前状态
+推荐使用启动脚本 [start_mcp_server.bat](D:\opencalw\teaching\mcp-real-demo\start_mcp_server.bat)，在 Cherry Studio 的 `STDIO` 配置中填写：
 
-- 两套 demo 都已完成
-- 两套 demo 都已本地验证通过
-- 真 MCP 版已可用于 Cherry Studio 的 `STDIO` 模式接入
+- `Command`: `C:\Windows\System32\cmd.exe`
+- `Arguments`: `/c D:\opencalw\teaching\mcp-real-demo\start_mcp_server.bat`
+
+## 说明
+
+- 没有保留 PPT、讲稿、教学备注
+- 仓库现在只包含代码和运行说明
